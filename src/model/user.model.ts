@@ -1,4 +1,4 @@
-import { DocumentType, Severity, getModelForClass, modelOptions, pre, prop } from "@typegoose/typegoose";
+import { DocumentType, Index, Severity, getModelForClass, index, modelOptions, pre, prop } from "@typegoose/typegoose";
 import argon2 from "argon2";
 import log from "../utils/logger";
 import nanoid from "nanoid";
@@ -22,6 +22,7 @@ import nanoid from "nanoid";
     allowMixed: Severity.ALLOW,
   },
 })
+@Index({ email: 1 })
 export class User {
   @prop({ lowercase: true, required: true, unique: true })
   email: string;

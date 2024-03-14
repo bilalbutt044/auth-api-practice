@@ -8,6 +8,7 @@ import router from "./routes";
 
 const app = express();
 const port = config.get("port");
+app.use(express.json());
 app.use(router);
 
 app.listen(port, () => {

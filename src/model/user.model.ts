@@ -1,6 +1,7 @@
 import { DocumentType, Severity, getModelForClass, modelOptions, pre, prop } from "@typegoose/typegoose";
 import argon2 from "argon2";
 import log from "../utils/logger";
+import nanoid from "nanoid";
 
 @pre<User>("save", async function () {
   if (!this.isModified("password")) {
@@ -34,7 +35,7 @@ export class User {
   @prop({ required: true })
   password: string;
 
-  @prop({ required: true, default: async () => (await import("nanoid")).nanoid() })
+  @prop({ required: true, default: () => nanoid() })
   verificationCode: string;
 
   @prop()

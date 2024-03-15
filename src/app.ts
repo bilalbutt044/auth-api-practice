@@ -1,5 +1,7 @@
-require("dotenv").config();
+import * as dotenv from "dotenv";
 
+// Load environment variables before using them
+dotenv.config();
 import express from "express";
 import config from "config";
 import connectToDb from "./utils/connectToDb";
